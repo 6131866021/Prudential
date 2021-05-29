@@ -1,27 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import classes from './App.css';
-import Persons from '../components/Persons/Persons';
-import Cockpit from '../components/Cockpit/Cockpit';
+import classes from "./App.css";
+import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
+import Form from "../components/example/Form";
+import TodoList from "../components/example/TodoList";
 
 class App extends Component {
   state = {
     persons: [
-      { id: 'asfa1', name: 'Max', age: 28 },
-      { id: 'vasdf1', name: 'Manu', age: 29 },
-      { id: 'asdf11', name: 'Stephanie', age: 26 }
+      { id: "asfa1", name: "Max", age: 28 },
+      { id: "vasdf1", name: "Manu", age: 29 },
+      { id: "asdf11", name: "Stephanie", age: 26 },
     ],
-    otherState: 'some other value',
-    showPersons: false
+    otherState: "some other value",
+    showPersons: false,
   };
 
   nameChangedHandler = (event, id) => {
-    const personIndex = this.state.persons.findIndex(p => {
+    const personIndex = this.state.persons.findIndex((p) => {
       return p.id === id;
     });
 
     const person = {
-      ...this.state.persons[personIndex]
+      ...this.state.persons[personIndex],
     };
 
     // const person = Object.assign({}, this.state.persons[personIndex]);
@@ -34,7 +36,7 @@ class App extends Component {
     this.setState({ persons: persons });
   };
 
-  deletePersonHandler = personIndex => {
+  deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
@@ -48,15 +50,16 @@ class App extends Component {
 
   render() {
     let persons = null;
-    let btnClass = '';
+    let btnClass = "";
 
     if (this.state.showPersons) {
       persons = (
         <div>
-          <Persons 
+          <Persons
             persons={this.state.persons}
             clicked={this.deletePersonHandler}
-            changed={this.nameChangedHandler} />
+            changed={this.nameChangedHandler}
+          />
         </div>
       );
 
@@ -66,11 +69,14 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Cockpit
-          title={this.props.appTitle} 
+          title={this.props.appTitle}
           showPersons={this.state.showPersons}
           persons={this.state.persons}
-          clicked={this.togglePersonsHandler} />
+          clicked={this.togglePersonsHandler}
+        />
         {persons}
+        <Form />
+        <TodoList />
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));

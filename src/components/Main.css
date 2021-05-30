@@ -1,0 +1,25 @@
+.header {
+  top: 30%;
+  font-size: 2rem;
+}
+
+.Button {
+  width: 70%;
+  height: 7vh;
+  background-color: #ed242e;
+  border-radius: 10px;
+  font: inherit;
+  border: none;
+}
+
+.Button p {
+  font-weight: 140;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.instruction {
+  background-image: url("../assets/Instruction.png");
+}

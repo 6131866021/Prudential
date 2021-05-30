@@ -232,9 +232,6 @@ function Main() {
         <div className={classes.loginBg}>
           <img src={Background}></img>
         </div>
-        {/* <button className={classes.fb}>
-          <p>Login with Facebook</p>
-        </button> */}
         <div className={classes.input}>{inputPrompt}</div>
       </div>
     );

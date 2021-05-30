@@ -39,10 +39,10 @@ function Main() {
     console.log({ checkone }, { checktwo }, { checkthree });
   };
 
-  // const instructionButtonClickedHandler = () => {
-  //   setClickCheckList(false);
-  //   setClickInstruction(true);
-  // };
+  const instructionButtonClickedHandler = () => {
+    setClickCheckList(false);
+    setClickCommencing(true);
+  };
 
   // const commencingButtonClickedHandler = () => {
   //   setClickInstruction(false);
@@ -50,8 +50,7 @@ function Main() {
   // };
 
   const listeningButtonClickedHandler = () => {
-    setClickCheckList(false);
-    // setClickCommencing(false);
+    setClickCommencing(false);
     setClickListening(true);
   };
 
@@ -84,14 +83,14 @@ function Main() {
     setCheckThree(!checkthree);
   };
 
-  const createTodo = () => {
-    const userRef = firebase.database().ref("Users");
-    const user = {
-      name,
-      normal: true,
-    };
-    userRef.push(user);
-  };
+  // const createTodo = () => {
+  //   const userRef = firebase.database().ref("Users");
+  //   const user = {
+  //     name,
+  //     normal: true,
+  //   };
+  //   userRef.push(user);
+  // };
 
   const inputPrompt = clickPulse ? (
     <div>
@@ -168,13 +167,20 @@ function Main() {
       </div>
     ) : clickCheckList === true ? (
       <div className={classes.InstructionPage}>
+        <div className={classes.instructionBg}>
+          <img src={Instruction}></img>
+        </div>
         <div className={classes.placeDevice}>
           <p>Place the device on the left chest in the region shown below</p>
         </div>
-        <img src={Instruction}></img>
+        <div className={classes.layDown}>
+          <p>
+            Please lay down your mobile phone down after tapping “Get Statted”
+          </p>
+        </div>
         <button
           className={classes.Button}
-          onClick={listeningButtonClickedHandler}
+          onClick={instructionButtonClickedHandler}
         >
           <p>Get Started</p>
         </button>
@@ -189,29 +195,25 @@ function Main() {
         </div>
       </div>
     ) : clickCommencing === true ? (
-      <div className={classes.Listening}>
+      <div
+        className={classes.ListeningPage}
+        onClick={listeningButtonClickedHandler}
+      >
+        <div className={classes.label}>Listening</div>
         <img src={ConnectingDevice}></img>
       </div>
     ) : clickListening === true ? (
       <div className={classes.AnalyzePage}>
-        Based on our analysis
-        <div className={classes.abone}>
-          <p>Abnormality</p>
-        </div>
-        <div className={classes.abtwo}>
-          <p>Abnormality</p>
-        </div>
-        <div className={classes.abthree}>
-          <p>Abnormality</p>
-        </div>
-        <p>
+        <div className={classes.analyzeHeader}>Your Findings:</div>
+        <div className={classes.result}>Abnormal</div>
+        <div className={classes.describeOne}>
           Please recheck the abnormality conditions again. Keep in mind that it
           is possible that it is false positive.
-        </p>
-        <p>
-          If the abnormalites were presented for most time, please seek medical
-          attention.
-        </p>
+        </div>
+        <div className={classes.describeTwo}>
+          If our device interpreted your results as abnormal for multiple times
+          and works properly on other person, please seek medical attention.
+        </div>
         <button className={classes.Button} onClick={backButtonClickedHandler}>
           <p>Back to Login Page</p>
         </button>

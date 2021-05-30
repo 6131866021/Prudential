@@ -126,7 +126,7 @@
 }
 
 .pairingBtn {
-  margin-top: 10%;
+  margin-top: 30%;
 }
 
 /* Success Page */
@@ -220,7 +220,7 @@
 }
 
 .checkListBtn {
-  margin-top: 10%;
+  margin-top: 25%;
 }
 
 /* Instruction Page */
@@ -229,12 +229,103 @@
   height: inherit;
 }
 
+.instructionBg {
+  position: fixed;
+  z-index: -1;
+}
+
+.placeDevice {
+  display: flex;
+  background-color: #efefef;
+  margin: auto;
+  margin-top: 20%;
+  margin-bottom: 5%;
+  width: 80%;
+  border-radius: 15px;
+  text-align: start;
+}
+
+.placeDevice p {
+  margin-left: 5%;
+  font-weight: 120;
+  font-size: 1.2rem;
+}
+
+.layDown {
+  display: flex;
+  margin-top: 400px;
+  margin-bottom: 10%;
+  margin-left: 10%;
+  width: 55%;
+  text-align: start;
+}
+
+.layDown p {
+  font-weight: 120;
+  font-size: 1rem;
+}
+
+/* Listening Page */
+
+.ListeningPage {
+  height: inherit;
+}
+
+.label {
+  margin-top: 20%;
+  margin-bottom: 5%;
+  font-weight: 160;
+  font-size: 1.4rem;
+}
+
 /* Analyze Page */
 
 .AnalyzePage {
   height: inherit;
 }
 
-.instruction {
-  background-image: url("../assets/Instruction.png");
+.analyzeHeader {
+  margin-top: 25%;
+  margin-bottom: 10%;
+  margin-left: 10%;
+  font-weight: 160;
+  font-size: 1.4rem;
+  text-align: start;
+}
+
+.result {
+  background-color: #efefef;
+  margin: auto;
+  margin-bottom: 15%;
+  width: 60%;
+  height: 3rem;
+  border-radius: 15px;
+  font-weight: 140;
+  font-size: 1.2rem;
+}
+
+/* .result p {
+  margin: auto;
+  font-weight: 140;
+  font-size: 1.2rem;
+} */
+
+.describeOne {
+  font-weight: 120;
+  font-size: 1rem;
+  width: 80%;
+  display: flex;
+  margin: auto;
+  margin-bottom: 10%;
+  text-align: start;
+}
+
+.describeTwo {
+  font-weight: 120;
+  font-size: 1rem;
+  width: 80%;
+  display: flex;
+  margin: auto;
+  text-align: start;
+  margin-bottom: 10%;
 }

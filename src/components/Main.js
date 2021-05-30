@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from "./Main.css";
 import ConnectingDevice from "../assets/Scan.png";
 import Instruction from "../assets/Instruction.png";
+import Logo from "../assets/mic.png";
 import firebase from "../utils/firebase";
 
 function Main() {
@@ -13,17 +14,18 @@ function Main() {
   const [clickCommencing, setClickCommencing] = useState(false);
   const [clickListening, setClickListening] = useState(false);
   const [clickAnalyze, setClickAnalyze] = useState(false);
+  const [clickPulse, setClickPulse] = useState(false);
 
   const loginButtonClickedHandler = () => {
     setClickLogin(true);
-    createTodo();
+    // createTodo();
     console.log("Log into HeartBose System");
   };
 
-  const pairingButtonClickedHandler = () => {
-    setClickLogin(false);
-    setClickPairing(true);
-  };
+  // const pairingButtonClickedHandler = () => {
+  //   setClickLogin(false);
+  //   setClickPairing(true);
+  // };
 
   const successButtonClickedHandler = () => {
     setClickLogin(false);
@@ -34,17 +36,18 @@ function Main() {
   const checkListButtonClickedHandler = () => {
     setClickSuccess(false);
     setClickCheckList(true);
+    console.log({ checkone }, { checktwo }, { checkthree });
   };
 
-  const instructionButtonClickedHandler = () => {
-    setClickCheckList(false);
-    setClickInstruction(true);
-  };
+  // const instructionButtonClickedHandler = () => {
+  //   setClickCheckList(false);
+  //   setClickInstruction(true);
+  // };
 
-  const commencingButtonClickedHandler = () => {
-    setClickInstruction(false);
-    setClickCommencing(true);
-  };
+  // const commencingButtonClickedHandler = () => {
+  //   setClickInstruction(false);
+  //   setClickCommencing(true);
+  // };
 
   const listeningButtonClickedHandler = () => {
     setClickCheckList(false);
@@ -52,9 +55,33 @@ function Main() {
     setClickListening(true);
   };
 
+  const backButtonClickedHandler = () => {
+    setClickListening(false);
+  };
+
+  const pulseClickedHandler = () => {
+    setClickPulse(true);
+  };
+
   const [name, setName] = useState("");
+  const [checkone, setCheckOne] = useState(false);
+  const [checktwo, setCheckTwo] = useState(false);
+  const [checkthree, setCheckThree] = useState(false);
+
   const handleOnChange = (e) => {
     setName(e.target.value);
+  };
+
+  const handleOnChangeOne = (e) => {
+    setCheckOne(!checkone);
+  };
+
+  const handleOnChangeTwo = (e) => {
+    setCheckTwo(!checktwo);
+  };
+
+  const handleOnChangeThree = (e) => {
+    setCheckThree(!checkthree);
   };
 
   const createTodo = () => {
@@ -66,20 +93,40 @@ function Main() {
     userRef.push(user);
   };
 
+  const inputPrompt = clickPulse ? (
+    <div>
+      <input
+        type="text"
+        onChange={handleOnChange}
+        value={name}
+        placeholder="Enter Your Name"
+        className={classes.nameInput}
+      />
+    </div>
+  ) : (
+    <div>
+      <button className={classes.pulse} onClick={pulseClickedHandler}>
+        <p>Login with Pulse</p>
+      </button>
+    </div>
+  );
+
   const mainPrompt =
     clickLogin === true ? (
       <div className={classes.PairingPage}>
         <div className={classes.connecting}>
-          Connecting to the device . . .
-          <div className={classes.deviceName}>- {name}'s stethoscope-</div>
-          <img src={ConnectingDevice}></img>
+          <p>Connecting to the device . . .</p>
         </div>
-        <button
-          className={classes.Button}
-          onClick={successButtonClickedHandler}
-        >
-          <p>Next</p>
-        </button>
+        <div className={classes.deviceName}>- {name}'s stethoscope-</div>
+        <img src={ConnectingDevice}></img>
+        <div className={classes.pairingBtn}>
+          <button
+            className={classes.Button}
+            onClick={successButtonClickedHandler}
+          >
+            <p>Next</p>
+          </button>
+        </div>
       </div>
     ) : clickPairing === true ? (
       <div className={classes.SuccessPage}>
@@ -99,13 +146,18 @@ function Main() {
           <h1>Make sure that you</h1>
         </div>
         <div className={classes.checkone}>
+          <input type="checkbox" onClick={handleOnChangeOne} />
           <p>at rest for at least 10 mininutes</p>
         </div>
         <div className={classes.checktwo}>
+          <input type="checkbox" onClick={handleOnChangeTwo} />
           <p>find a comfortable spot to lie down</p>
         </div>
         <div className={classes.checkthree}>
+          <input type="checkbox" onClick={handleOnChangeThree} />
           <p>minimize your movements while listening procedure</p>
+        </div>
+        <div className={classes.checkListBtn}>
           <button
             className={classes.Button}
             onClick={checkListButtonClickedHandler}
@@ -160,22 +212,23 @@ function Main() {
           If the abnormalites were presented for most time, please seek medical
           attention.
         </p>
+        <button className={classes.Button} onClick={backButtonClickedHandler}>
+          <p>Back to Login Page</p>
+        </button>
       </div>
     ) : clickAnalyze === true ? (
       <div></div>
     ) : (
       <div className={classes.LoginPage}>
-        <div className={classes.header}>HeartBose</div>
-        <div className={classes.fb}></div>
-        <div className={classes.line}></div>
-        <div className={classes.name}>
-          <input
-            type="text"
-            onChange={handleOnChange}
-            value={name}
-            placeholder="Enter Your Name"
-          />
+        <div className={classes.logo}>
+          <img src={Logo}></img>
         </div>
+        <div className={classes.header}>HEARTBOSE</div>
+        <button className={classes.fb}>
+          <p>Login with Facebook</p>
+        </button>
+        <div className={classes.line}></div>
+        <div className={classes.input}>{inputPrompt}</div>
         <div className={classes.loginBtn}>
           <button
             className={classes.Button}

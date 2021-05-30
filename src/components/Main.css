@@ -20,14 +20,12 @@
 /* Login Page */
 
 .LoginPage {
-  height: 100vh;
-  background-color: #ed242e;
+  height: inherit;
 }
 
-.header {
-  margin-top: 5%;
-  font-size: 2rem;
-  color: white;
+.loginBg {
+  position: fixed;
+  z-index: -1;
 }
 
 .fb {
@@ -45,17 +43,15 @@
   font-size: 1.2rem;
   margin: 0;
   padding: 0;
-  /* color: #ed242e; */
-}
-
-.input {
-  margin-top: 10%;
+  color: #ed242e;
 }
 
 .pulse {
+  margin-top: 120%;
   width: 70%;
   height: 7vh;
   border-color: #ed242e;
+  background-color: #efefef;
   border-radius: 10px;
   font: inherit;
   border: none;
@@ -69,10 +65,8 @@
   /* color: #ed242e; */
 }
 
-.name {
-}
-
 .nameInput {
+  margin-top: 120%;
   width: 70%;
   height: 7vh;
   border-color: #ed242e;
@@ -97,7 +91,21 @@
 }
 
 .loginBtn {
-  margin-top: 30%;
+  margin-top: 5%;
+  width: 70%;
+  height: 7vh;
+  background-color: black;
+  border-radius: 10px;
+  font: inherit;
+  border: none;
+}
+
+.loginBtn p {
+  font-weight: 140;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+  color: white;
 }
 
 /* Pairing Page */
@@ -138,11 +146,12 @@
 /* CheckList Page */
 
 .CheckListPage {
-  /* height: inherit; */
+  height: inherit;
 }
 
 .checkListHeader {
-  margin-top: 10%;
+  margin-top: 20%;
+  margin-bottom: 10%;
 }
 
 .checkListHeader p {
@@ -153,8 +162,8 @@
 }
 
 .checkListHeader h1 {
-  font-weight: 180;
-  font-size: 1.4rem;
+  font-weight: 200;
+  font-size: 1.6rem;
   text-align: start;
   margin-left: 10%;
 }
@@ -165,18 +174,21 @@
   margin: auto;
   margin-bottom: 5%;
   width: 80%;
+  height: 80px;
   border-radius: 15px;
 }
 
 .checkone input {
   margin: auto;
-  margin-left: 10%;
+  width: 20%;
 }
 
 .checkone p {
+  margin-top: 32px;
+  text-align: start;
   font-weight: 120;
   font-size: 1rem;
-  margin-left: -3%;
+  width: 80%;
 }
 
 .checktwo {
@@ -185,18 +197,21 @@
   margin: auto;
   margin-bottom: 5%;
   width: 80%;
+  height: 80px;
   border-radius: 15px;
 }
 
 .checktwo input {
   margin: auto;
-  margin-left: 10%;
+  width: 20%;
 }
 
 .checktwo p {
+  margin-top: 24px;
+  text-align: start;
   font-weight: 120;
   font-size: 1rem;
-  margin-left: -3%;
+  width: 80%;
 }
 
 .checkthree {
@@ -205,22 +220,25 @@
   margin: auto;
   margin-bottom: 5%;
   width: 80%;
+  height: 80px;
   border-radius: 15px;
 }
 
 .checkthree input {
   margin: auto;
-  margin-left: 10%;
+  width: 20%;
 }
 
 .checkthree p {
+  margin-top: 24px;
+  text-align: start;
   font-weight: 120;
   font-size: 1rem;
-  margin-left: -3%;
+  width: 80%;
 }
 
 .checkListBtn {
-  margin-top: 25%;
+  margin-top: 15%;
 }
 
 /* Instruction Page */
@@ -231,6 +249,7 @@
 
 .instructionBg {
   position: fixed;
+  margin-bottom: 5%;
   z-index: -1;
 }
 
@@ -238,7 +257,7 @@
   display: flex;
   background-color: #efefef;
   margin: auto;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-bottom: 5%;
   width: 80%;
   border-radius: 15px;
@@ -246,9 +265,11 @@
 }
 
 .placeDevice p {
-  margin-left: 5%;
+  width: 90%;
   font-weight: 120;
   font-size: 1.2rem;
+  text-align: start;
+  margin-left: 10%;
 }
 
 .layDown {
@@ -272,8 +293,8 @@
 }
 
 .label {
-  margin-top: 20%;
-  margin-bottom: 5%;
+  margin-top: 40%;
+  margin-bottom: 10%;
   font-weight: 160;
   font-size: 1.4rem;
 }
@@ -286,7 +307,7 @@
 
 .analyzeHeader {
   margin-top: 25%;
-  margin-bottom: 10%;
+  margin-bottom: 15%;
   margin-left: 10%;
   font-weight: 160;
   font-size: 1.4rem;
@@ -298,17 +319,15 @@
   margin: auto;
   margin-bottom: 15%;
   width: 60%;
-  height: 3rem;
+  height: 40px;
   border-radius: 15px;
+}
+
+.result p {
+  top: 17px;
   font-weight: 140;
   font-size: 1.2rem;
 }
-
-/* .result p {
-  margin: auto;
-  font-weight: 140;
-  font-size: 1.2rem;
-} */
 
 .describeOne {
   font-weight: 120;
@@ -327,5 +346,5 @@
   display: flex;
   margin: auto;
   text-align: start;
-  margin-bottom: 10%;
+  margin-bottom: 20%;
 }

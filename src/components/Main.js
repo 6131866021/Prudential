@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from "./Main.css";
 import ConnectingDevice from "../assets/Scan.png";
 import Instruction from "../assets/Instruction.png";
-import Logo from "../assets/mic.png";
+import Background from "../assets/Background.png";
 import firebase from "../utils/firebase";
 
 function Main() {
@@ -101,6 +101,9 @@ function Main() {
         placeholder="Enter Your Name"
         className={classes.nameInput}
       />
+      <button className={classes.loginBtn} onClick={loginButtonClickedHandler}>
+        <p>Start</p>
+      </button>
     </div>
   ) : (
     <div>
@@ -116,7 +119,7 @@ function Main() {
         <div className={classes.connecting}>
           <p>Connecting to the device . . .</p>
         </div>
-        <div className={classes.deviceName}>- {name}'s stethoscope-</div>
+        <div className={classes.deviceName}>- {name}'s stethoscope -</div>
         <img src={ConnectingDevice}></img>
         <div className={classes.pairingBtn}>
           <button
@@ -170,8 +173,10 @@ function Main() {
         <div className={classes.instructionBg}>
           <img src={Instruction}></img>
         </div>
-        <div className={classes.placeDevice}>
-          <p>Place the device on the left chest in the region shown below</p>
+        <div>
+          <div className={classes.placeDevice}>
+            <p>Place the device on the left chest in the region shown below</p>
+          </div>
         </div>
         <div className={classes.layDown}>
           <p>
@@ -205,7 +210,9 @@ function Main() {
     ) : clickListening === true ? (
       <div className={classes.AnalyzePage}>
         <div className={classes.analyzeHeader}>Your Findings:</div>
-        <div className={classes.result}>Abnormal</div>
+        <div className={classes.result}>
+          <p>Abnormal</p>
+        </div>
         <div className={classes.describeOne}>
           Please recheck the abnormality conditions again. Keep in mind that it
           is possible that it is false positive.
@@ -222,23 +229,13 @@ function Main() {
       <div></div>
     ) : (
       <div className={classes.LoginPage}>
-        <div className={classes.logo}>
-          <img src={Logo}></img>
+        <div className={classes.loginBg}>
+          <img src={Background}></img>
         </div>
-        <div className={classes.header}>HEARTBOSE</div>
-        <button className={classes.fb}>
+        {/* <button className={classes.fb}>
           <p>Login with Facebook</p>
-        </button>
-        <div className={classes.line}></div>
+        </button> */}
         <div className={classes.input}>{inputPrompt}</div>
-        <div className={classes.loginBtn}>
-          <button
-            className={classes.Button}
-            onClick={loginButtonClickedHandler}
-          >
-            <p>Start</p>
-          </button>
-        </div>
       </div>
     );
 
